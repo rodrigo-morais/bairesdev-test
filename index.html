@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<script src='distance.js'></script>
+		<script src='palindrome.js'></script>
 		<script>
 			var point1 = {x:2, y:2},
 				point2 = {x:3, y:3},
@@ -18,6 +19,21 @@
 					distanceThreePoints(point2, point3, point1
 				)
 			);	
+
+
+			console.log('Palindrome');
+			console.log(
+				'Palindrome to \"abccba\" has to be true: ' +
+				isAlmostPalindrome('abccba')
+			);
+			console.log(
+				'Palindrome to \"abccbx\" has to be true: ' +
+				isAlmostPalindrome('abccbx')
+			);
+			console.log(
+				'Palindrome to \"abccbbx\" has to be false: ' +
+				isAlmostPalindrome('abccbbx')
+			);
 		</script>
 	</head>
 </html>
