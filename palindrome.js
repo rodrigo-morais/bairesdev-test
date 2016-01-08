@@ -10,23 +10,28 @@ function isAlmostPalindrome(word) {
 
 function testNumberOfDifferentLetters(word, newWord){
 	var counter = 0,
-		changes = 0,
-		isEqual = false;
+		isEqual = word === newWord;
 
 	if(word.length === newWord.length) {
-		while(counter < word.length && isEqual){
+		while(counter < word.length && isEqual === false){
 			if(word[counter] !== newWord[counter]){
-				if(counter == 0) {
-					isEqual = newWord.slice(1, newWord.length) === word.slice(0, word.length)
-				}
-				else {
-					isEqual = (newWord.slice(0, counter - 1) + newWord(counter + 1, newWord.length)) === (word.slice(0, counter - 1) + word(counter + 1, word.length))
-				}
-				changes = changes + 1;
+				var changedNewWord = substituteChar(newWord, counter, word.slice(counter, counter + 1))
+				isEqual = changedNewWord === word;
 			}
 			counter = counter + 1;
 		}
 	}
 
-	return isEqual && changes <= 1;
+	return isEqual;
 };
+
+function substituteChar(word, position, char) {
+	if(position === 0) {
+		return char + word.slice(1);
+	}
+	else if(position === word.length) {
+		return word.slice(0, word.length) + char;
+	}
+
+	return word.slice(0, position) + char + word.slice(position, position + 1) + word.slice(position + 2);
+}
