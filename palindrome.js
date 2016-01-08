@@ -1,9 +1,5 @@
 function isAlmostPalindrome(word) {
-	var newWord = '';
-
-	for(var counter = 0; counter < word.length; counter = counter + 1) {
-		newWord = word[counter] + newWord;
-	}
+	var newWord = word.split('').reverse().join('');
 
 	return word === newWord || testNumberOfDifferentLetters(word, newWord);
 }
@@ -23,7 +19,7 @@ function testNumberOfDifferentLetters(word, newWord){
 	}
 
 	return isEqual;
-};
+}
 
 function substituteChar(word, position, char) {
 	if(position === 0) {
