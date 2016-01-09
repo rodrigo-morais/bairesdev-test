@@ -1,7 +1,12 @@
 function isAlmostPalindrome(word) {
-	var newWord = word.split('').reverse().join('');
+	var newWord = reverse(word);
 
 	return word === newWord || testNumberOfDifferentLetters(word, newWord);
+}
+
+function reverse(word) {
+	if(word === '') return '';
+	else return reverse(word.slice(1)) + word.slice(0,1);
 }
 
 function testNumberOfDifferentLetters(word, newWord){
@@ -30,4 +35,9 @@ function substituteChar(word, position, char) {
 	}
 
 	return word.slice(0, position) + char + word.slice(position, position + 1) + word.slice(position + 2);
+}
+
+function testNumberOfDifferentLetters2(word, newWord, changes){
+	if(word.length <= 0 || word === newWord) return changes <= 1;
+	else testNumberOfDifferentLetters2(word.slice(1), newWord.slice(1), changes + 1);
 }
